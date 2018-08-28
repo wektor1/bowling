@@ -1,2 +1,2 @@
 ## Bowling management system
-[![Build Status](https://travis-ci.org/LuckyCode7/Bowling-management-system.svg?branch=master)](https://travis-ci.org/LuckyCode7/Bowling-management-system)
+[![Build Status](https://travis-ci.org/LuckyCode7/Bowling-management-system.svg?branch=master)](https://travis-ci.org/LuckyCode7/Bowling-management-system) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/da2461c4b12b49c6a105fe55b47c7c98)](https://www.codacy.com/app/LuckyCode7/Bowling-management-system?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LuckyCode7/Bowling-management-system&amp;utm_campaign=Badge_Grade)
