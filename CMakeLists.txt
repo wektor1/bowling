@@ -41,7 +41,9 @@ project(Bowling)
 
 set(SRC_LIST
     inc/Bowling.hpp
+    inc/InputValidation.hpp
     src/Bowling.cpp
+    src/InputValidation.cpp
 )
 
 include_directories(src)
