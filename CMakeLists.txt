@@ -57,7 +57,7 @@ else (UNIX)
 endif (UNIX)
 
 set(TEST_SRC_LIST
-    test/BowlingTest.cpp
+    test/InputValidationTest.cpp
     test/test_main.cpp
 )
 
