@@ -4,7 +4,5 @@
 int main()
 
 {
-    InputValidation check("|||||||||||");
-    check.checkInputData();
     return 0;
 }
