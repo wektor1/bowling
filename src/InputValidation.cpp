@@ -148,7 +148,7 @@ bool InputValidation::checkFirstAndLastSeparator()
     {
         return false;
     }
-    else return true;
+    return true;
 }
 
 bool InputValidation::checkInputData()
