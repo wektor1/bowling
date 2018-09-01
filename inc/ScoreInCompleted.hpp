@@ -3,9 +3,9 @@
 
 class ScoreInCompleted
 {
-    int score_, ball_score_, ball_score_multiplier_,
-        second_ball_score_multiplier_, third_ball_score_multiplier_;
-    std::string game_;
+    int score, ball_score, ball_score_multiplier,
+        second_ball_score_multiplier, third_ball_score_multiplier;
+    std::string game;
     void isStrike(const char ball);
     void isMissed(const char ball);
     void isSpare(const char ball);
@@ -16,7 +16,7 @@ class ScoreInCompleted
     void endScore();
 
 public:
-    ScoreInCompleted(const std::string game);
+    ScoreInCompleted(const std::string& game);
     ~ScoreInCompleted();
     int getScore() const;
 };
