@@ -16,7 +16,7 @@ class ScoreInCompleted
     void endScore();
 
 public:
-    ScoreInCompleted(const std::string& game);
+    explicit ScoreInCompleted(const std::string& game);
     ~ScoreInCompleted();
     int getScore() const;
 };
