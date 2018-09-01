@@ -208,7 +208,7 @@ TEST_F(InputValidationTest, 22_check_method_checkInputData)
     InputValidation input("Mike:x|--|9/|x|-3|18|x|-3|5/|-/||");
     //WHEN call checkInputData method
     //THEN
-    EXPECT_FALSE(input.checkInputData());
+    EXPECT_TRUE(input.checkInputData());
 }
 
 TEST_F(InputValidationTest, 23_check_method_checkInputData)
@@ -301,69 +301,47 @@ TEST_F(InputValidationTest, 32_check_method_checkInputData)
     EXPECT_FALSE(input.checkInputData());
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+TEST_F(InputValidationTest, 33_check_method_checkInputData)
+{
+    //GIVEN
+    InputValidation input("Mike:x|--|3");
+    //WHEN call checkInputData method
+    //THEN
+    EXPECT_TRUE(input.checkInputData());
+}
+
+TEST_F(InputValidationTest, 34_check_method_checkInputData)
+{
+    //GIVEN
+    InputValidation input("Mike:x|--|x");
+    //WHEN call checkInputData method
+    //THEN
+    EXPECT_FALSE(input.checkInputData());
+}
+
+TEST_F(InputValidationTest, 35_check_method_checkInputData)
+{
+    //GIVEN
+    InputValidation input("Mike:x|--|/");
+    //WHEN call checkInputData method
+    //THEN
+    EXPECT_FALSE(input.checkInputData());
+}
+
+TEST_F(InputValidationTest, 36_check_method_checkInputData)
+{
+    //GIVEN
+    InputValidation input("Mike:x|--|9/|x|-3|18|x|-3|5/|x||");
+    //WHEN call checkInputData method
+    //THEN
+    EXPECT_TRUE(input.checkInputData());
+}
+
+TEST_F(InputValidationTest, 37_check_method_checkInputData)
+{
+    //GIVEN
+    InputValidation input("Mike:x|--|9/|x|-3|18|x|-3|5/|x||/");
+    //WHEN call checkInputData method
+    //THEN
+    EXPECT_FALSE(input.checkInputData());
+}

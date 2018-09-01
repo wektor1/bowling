@@ -1,8 +1,8 @@
 #include <iostream>
 #include "../inc/Bowling.hpp"
 #include<../inc/InputValidation.hpp>
-int main()
 
+int main()
 {
     return 0;
 }
