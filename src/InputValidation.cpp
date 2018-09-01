@@ -74,14 +74,13 @@ bool InputValidation::checkFrameSeparator(const int& position)
         switch (substring[position - 2])
         {
         case 'x':
-            if (substring.size() == substring.find_last_of('|') + 2)
+            if (substring.size() == substring.find_last_of('|') + 2) 
             {
-                if (substring[position + 1] != 'x')
-                {
-                    return false;
-                }
+                if (substring[position + 1] == 'x') return true;
+                if (substring[position + 1] == '/') return false;
             }
-            else if (substring.size() == substring.find_last_of('|') + 3)
+            else if (substring.size() == substring.find_last_of('|') + 1) return true;
+            else if (substring.size() == substring.find_last_of('|') + 3) 
             {
                 if (substring[position + 1] == '/' || substring[position + 1] == 'x')
                 {
@@ -100,8 +99,8 @@ bool InputValidation::checkFrameSeparator(const int& position)
             break;
 
         case '/':
-            if (substring.size() != substring.find_last_of('|') + 2 || substring[position + 1] == '/')
-                return false;
+            if (substring.size() == substring.find_last_of('|') + 1) return true;
+            if (substring.size() != substring.find_last_of('|') + 2 || substring[position + 1] == '/') return false;
             break;
 
         default:
@@ -135,9 +134,21 @@ bool InputValidation::checkNumberOfPinchedPins(const int& position)
 bool InputValidation::checkFirstAndLastSeparator()
 {
     if (substring[0] == '|') return false;
-    else if (std::count(substring.begin(), substring.end(), '|') <= 9 && substring[substring.size() - 1] != '|') return false;
-    else if (std::count(substring.begin(), substring.end(), '|') == 10 && substring[substring.size() - 1] == '|') return false;
-    else return true;
+    else if (std::count(substring.begin(), substring.end(), '|') <= 9)
+    {
+        if (substring.size() == substring.find_last_of('|') + 2)
+        {
+            if (substring[substring.find_last_of('|') + 1] == 'x' ||
+                substring[substring.find_last_of('|') + 1] == '/')
+                return false;
+        }
+        if (substring.size() == substring.find_last_of('|') + 3) return false;
+    }
+    else if (std::count(substring.begin(), substring.end(), '|') == 10 && substring[substring.size() - 1] == '|')
+    {
+        return false;
+    }
+    return true;
 }
 
 bool InputValidation::checkInputData()
