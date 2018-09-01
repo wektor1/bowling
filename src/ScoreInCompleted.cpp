@@ -3,7 +3,7 @@
 #include <cctype>
 #include <cstdlib>
 
-ScoreInCompleted::ScoreInCompleted(std::string game) : game_(game)
+ScoreInCompleted::ScoreInCompleted(const std::string game) : game_(game)
 {
     endScore();
 }
