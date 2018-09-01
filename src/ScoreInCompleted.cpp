@@ -10,7 +10,7 @@ ScoreInCompleted::ScoreInCompleted(std::string game) : game_(game)
 
 ScoreInCompleted::~ScoreInCompleted() {}
 
-int ScoreInCompleted::getScore() { return score_; }
+int ScoreInCompleted::getScore() const { return score_; }
 
 void ScoreInCompleted::isStrike(const char ball)
 {

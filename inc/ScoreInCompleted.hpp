@@ -18,5 +18,5 @@ class ScoreInCompleted
 public:
     ScoreInCompleted(std::string game);
     ~ScoreInCompleted();
-    int getScore();
+    int getScore() const;
 };
