@@ -80,11 +80,7 @@ bool InputValidation::checkFrameSeparator(const int& position)
                 if (substring[position + 1] == '/') return false;
             }
             else if (substring.size() == substring.find_last_of('|') + 1) return true;
-<<<<<<< HEAD
-            else if (substring.size() == substring.find_last_of('|') + 3)
-=======
             else if (substring.size() == substring.find_last_of('|') + 3) 
->>>>>>> fb4ea98b1fa40fc48695836f498aa6290437414f
             {
                 if (substring[position + 1] == '/' || substring[position + 1] == 'x')
                 {
@@ -144,20 +140,9 @@ bool InputValidation::checkFirstAndLastSeparator()
         {
             if (substring[substring.find_last_of('|') + 1] == 'x' ||
                 substring[substring.find_last_of('|') + 1] == '/')
-<<<<<<< HEAD
-            {
-                return false;
-            }
-        }
-        if (substring.size() == substring.find_last_of('|') + 3)
-        {
-            return false;
-        }
-=======
                 return false;
         }
         if (substring.size() == substring.find_last_of('|') + 3) return false;
->>>>>>> fb4ea98b1fa40fc48695836f498aa6290437414f
     }
     else if (std::count(substring.begin(), substring.end(), '|') == 10 && substring[substring.size() - 1] == '|')
     {
