@@ -47,11 +47,21 @@ TEST_F(GameStatusTest, 4_check_method_getStatus)
 TEST_F(GameStatusTest, 5_check_method_getStatus)
 {
     // GIVEN
-    std::string path("../results/Game4.txt");
+    std::string path("../results/Game5.txt");
     // WHEN
     Status status(path);
     // THEN
     ASSERT_EQ(status.getStatus(), "no game");
+}
+
+TEST_F(GameStatusTest, 6_check_method_getStatus)
+{
+    // GIVEN
+    std::string path("../results/Game10.txt");
+    // WHEN
+    Status status(path);
+    // THEN
+    ASSERT_EQ(status.getStatus(), "Can not open the file: ../results/Game10.txt");
 }
 
 
