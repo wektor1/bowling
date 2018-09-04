@@ -47,7 +47,7 @@ TEST_F(GameStatusTest, 4_check_method_getStatus)
 TEST_F(GameStatusTest, 5_check_method_getStatus)
 {
     // GIVEN
-    std::string path("../results/Game4.txt");
+    std::string path("../results/Game5.txt");
     // WHEN
     Status status(path);
     // THEN
