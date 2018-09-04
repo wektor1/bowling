@@ -43,9 +43,12 @@ set(SRC_LIST
     inc/ScoreInCompleted.hpp
     inc/Bowling.hpp
     inc/InputValidation.hpp
+    inc/GameStatus.hpp
+    inc/Exceptions.hpp
     src/ScoreInCompleted.cpp
     src/Bowling.cpp
     src/InputValidation.cpp
+    src/GameStatus.cpp
 )
 
 include_directories(src)
@@ -61,6 +64,7 @@ endif (UNIX)
 set(TEST_SRC_LIST
     test/ScoreInCompletedTest.cpp
     test/InputValidationTest.cpp
+    test/GameStatusTest.cpp
     test/test_main.cpp
 )
 
