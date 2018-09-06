@@ -32,7 +32,7 @@ void Game::openFile()
     while (!inFile.eof())
     {
     	std::getline(inFile, oneLine);
-        std::cout << test.size() << std::endl;
+        std::cout << oneLine.size() << std::endl;
         auto inputValidation = std::make_shared<InputValidation>(const std::string(oneLine));
         if(!(inputValidation->checkInputData()) && oneLine != "")
         {
