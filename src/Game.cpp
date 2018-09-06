@@ -35,7 +35,7 @@ void Game::openFile()
         std::getline(inFile, oneLine);
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
         InputValidation inputValidation(oneLine);
-        std::cout<<oneLine<<std::endl;
+        std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl;
         if(!(inputValidation.checkInputData()) && oneLine != "")
         {
             correctnessOfInputData = false;
