@@ -26,13 +26,14 @@ std::string Game::getGameStatus()
 void Game::openFile()
 {
     std::ifstream inFile(pathToFile);
-    std::string oneLine;
+    std::string longLine;
     if (inFile.is_open())
     {
-    while (std::getline(inFile,oneLine))
+    while (std::getline(inFile,longLine))
     {
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        InputValidation inputValidation(oneLine.substr(0,oneLine.size() - 1));
+        std::string oneLine = longLine.substr(0,longLine.size() - 1);
+        InputValidation inputValidation(oneLine);
         std::cout<<"ile literek: "<<oneLine.size()<<std::endl;
         std::cout<<"substring:"<<oneLine.substr(0,oneLine.size() - 1)<<std::endl;
         std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why false ?
