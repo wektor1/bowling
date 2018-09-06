@@ -8,7 +8,7 @@ struct GameTest : public ::testing::Test
 TEST_F(GameTest, 1_check_method_getGameStatus)
 {
     // GIVEN
-    std::string pathtoFile{"../results/Game1.txt"};
+    std::string pathtoFile("../results/Game1.txt");
     // WHEN
     Game game(pathtoFile);
     // THEN
@@ -18,7 +18,7 @@ TEST_F(GameTest, 1_check_method_getGameStatus)
 TEST_F(GameTest, 2_check_method_getGameStatus)
 {
     // GIVEN
-    std::string pathtoFile{"../results/Game2.txt"};
+    std::string pathtoFile("../results/Game2.txt");
     // WHEN
     Game game(pathtoFile);
     // THEN
@@ -28,7 +28,7 @@ TEST_F(GameTest, 2_check_method_getGameStatus)
 TEST_F(GameTest, 3_check_method_getGameStatus)
 {
     // GIVEN
-    std::string pathtoFile{"../results/Game3.txt"};
+    std::string pathtoFile("../results/Game3.txt");
     // WHEN
     Game game(pathtoFile);
     // THEN
@@ -38,7 +38,7 @@ TEST_F(GameTest, 3_check_method_getGameStatus)
 TEST_F(GameTest, 4_check_method_getGameStatus)
 {
     // GIVEN
-    std::string pathtoFile{"../results/Game4.txt"};
+    std::string pathtoFile("../results/Game4.txt");
     // WHEN
     Game game(pathtoFile);
     // THEN
