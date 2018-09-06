@@ -28,17 +28,13 @@ void Game::openFile()
 {
     std::ifstream inFile(pathToFile);
     std::string oneLine;
-    std::string test;
     if (inFile.is_open())
     {
-    while (!inFile.eof())
+    while (std::getline(inFile,oneLine))
     {
-        std::getline(inFile, oneLine);
-        std::stringstream ss(oneLine);
-        std::getline(ss, test);
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        InputValidation inputValidation(test);
-        std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why 0 ?
+        InputValidation inputValidation(oneLine);
+        std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why false ?
         if(!(inputValidation.checkInputData()) && oneLine != "")
         {
             correctnessOfInputData = false;
