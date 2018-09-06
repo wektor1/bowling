@@ -9,6 +9,7 @@ class Game
     std::vector<std::string> playersResult;
     bool correctnessOfInputData;
 
+
     void checkInputData();
     void openFile(std::ifstream &inFile);
 public:

@@ -20,7 +20,7 @@ std::string Game::getGameStatus()
     auto gameStatus = std::make_unique<Status>(playersResult);
     return gameStatus->getStatus();
     }
-    return "Incorrect format of input data";
+    return "Incorrect path to file or format of input data";
 }
 
 void Game::openFile(std::ifstream& inFile)
