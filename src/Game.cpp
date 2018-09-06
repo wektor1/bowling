@@ -6,7 +6,7 @@
 #include <memory>
 #include <iostream>
 #include <fstream>
-
+#include <sstream>
 
 Game::Game(const std::string& pathToFile_) :
     pathToFile(pathToFile_)
@@ -28,14 +28,17 @@ void Game::openFile()
 {
     std::ifstream inFile(pathToFile);
     std::string oneLine;
+    std::string test;
     if (inFile.is_open())
     {
     while (!inFile.eof())
     {
         std::getline(inFile, oneLine);
+        std::stringstream ss(oneLine);
+        std::getline(ss, test);
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        InputValidation inputValidation(oneLine);
-        std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl;
+        InputValidation inputValidation(test);
+        std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why 0 ?
         if(!(inputValidation.checkInputData()) && oneLine != "")
         {
             correctnessOfInputData = false;
