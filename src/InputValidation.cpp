@@ -188,7 +188,7 @@ bool InputValidation::checkInputData()
         }
         return true;
     }
-    else return false;
+    return false;
 }
 
 InputValidation::~InputValidation() {}
