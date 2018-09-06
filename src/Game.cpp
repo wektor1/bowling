@@ -32,8 +32,9 @@ void Game::openFile()
     while (std::getline(inFile,oneLine))
     {
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        InputValidation inputValidation(oneLine);
+        InputValidation inputValidation(oneLine.substr(0,oneLine.size() - 1));
         std::cout<<"ile literek: "<<oneLine.size()<<std::endl;
+        std::cout<<"substring:"<<oneLine.substr(0,oneLine.size() - 1)<<std::endl;
         std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why false ?
         if(!(inputValidation.checkInputData()) && oneLine != "")
         {
