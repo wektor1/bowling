@@ -45,4 +45,14 @@ TEST_F(GameTest, 4_check_method_getGameStatus)
     ASSERT_EQ(game.getGameStatus(), "game finished");
 }
 
+TEST_F(GameTest, 5_check_method_getGameStatus)
+{
+    // GIVEN
+    std::string pathtoFile("../results/Game11.txt");
+    // WHEN
+    Game game(pathtoFile);
+    // THEN
+    ASSERT_EQ(game.getGameStatus(), "");
+}
+
 

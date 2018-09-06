@@ -8,7 +8,13 @@
 #include <fstream>
 
 Game::Game(const std::string& pathToFile_) :
-    pathToFile(pathToFile_)
+    pathToFile(pathToFile_),
+    correctnessOfInputData(false)
+{
+}
+
+Game::Game(const std::string& folder, const std::string& fileName) :
+    Game("../" + folder + "/" + fileName + ".txt")
 {
 }
 
@@ -32,11 +38,9 @@ void Game::openFile()
     while (!inFile.eof())
     {
     	std::getline(inFile, oneLine, '\r');
-        std::cout << oneLine.size() << std::endl;
         auto inputValidation = std::make_shared<InputValidation>(oneLine);
         if(!(inputValidation->checkInputData()) && oneLine != "")
         {
-            correctnessOfInputData = false;
             throw IncorrectInputData(oneLine);
         }
         else playersResult.emplace_back(oneLine);

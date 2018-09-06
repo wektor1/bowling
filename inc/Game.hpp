@@ -13,5 +13,6 @@ class Game
     void openFile();
 public:
     explicit Game(const std::string& pathToFile_);
+    Game(const std::string& folder, const std::string& fileName);
     std::string getGameStatus();
 };
