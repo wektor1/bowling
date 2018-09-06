@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cctype>
 
-InputValidation::InputValidation(const std::string& data_) :
+InputValidation::InputValidation(std::string& data_) :
     data(data_),
     substring(data.substr(data.find(':') + 1, data.size()))
 {
