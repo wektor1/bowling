@@ -32,7 +32,8 @@ void Game::openFile()
     while (std::getline(inFile,oneLine))
     {
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        InputValidation inputValidation("Mike:3-|5/|9-|--|x|");
+        InputValidation inputValidation(oneLine);
+        std::cout<<"ile literek: "<<oneLine.size()<<std::endl;
         std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why false ?
         if(!(inputValidation.checkInputData()) && oneLine != "")
         {
