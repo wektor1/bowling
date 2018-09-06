@@ -34,7 +34,7 @@ void Game::openFile()
     {
         std::getline(inFile, oneLine);
         auto inputValidation = std::make_unique<InputValidation>(oneLine);
-        if(!inputValidation->checkInputData() && oneLine != "")
+        if(!(inputValidation->checkInputData()) && oneLine != "")
         {
             correctnessOfInputData = false;
             throw IncorrectInputData(oneLine);
