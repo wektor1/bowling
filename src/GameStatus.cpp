@@ -3,13 +3,8 @@
 #include <fstream>
 #include <algorithm>
 
-Status::Status(const std::string& pathToGameFile) :
-    path(pathToGameFile)
-{
-}
-
-Status::Status(const std::string& folder, const std::string& fileName) :
-    Status("../" + folder + "/" + fileName + ".txt")
+Status::Status(const std::vector<std::string>& allPlayersResults_) :
+    allPlayersResults(allPlayersResults_)
 {
 }
 
@@ -87,26 +82,8 @@ std::string Status::statusAnalyzer() const
 
 std::string Status::getStatus()
 {
-    std::string oneLine;
-    std::ifstream inFile(path);
-    try
-    {
-        if (inFile.is_open())
-        {
-            while (!inFile.eof())
-            {
-                std::getline(inFile, oneLine);
-                fileAnalyzer(oneLine);
-            }
-            inFile.close();
-            return statusAnalyzer();
-        }
-        else throw InvalidFile(path);
-    }
-    catch (InvalidFile& exception)
-    {
-        return exception.what();
-    }
+    for(auto x : allPlayersResults) fileAnalyzer(x);
+    return statusAnalyzer();
 }
 
 Status::~Status()
