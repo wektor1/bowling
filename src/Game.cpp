@@ -5,6 +5,7 @@
 #include <../inc/Exceptions.hpp>
 #include <memory>
 #include <iostream>
+#include <fstream>
 
 
 Game::Game(const std::string& pathToFile_) :
@@ -33,7 +34,7 @@ void Game::openFile()
     {
         std::getline(inFile, oneLine);
         auto inputValidation = std::make_unique<InputValidation>(oneLine);
-        if(inputValidation->checkInputData() == false)
+        if(!inputValidation->checkInputData() && oneLine != "")
         {
             correctnessOfInputData = false;
             throw IncorrectInputData(oneLine);
@@ -47,7 +48,6 @@ void Game::openFile()
 
 void Game::checkInputData()
 {
-
     try
     {
         openFile();
