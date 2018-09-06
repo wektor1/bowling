@@ -16,7 +16,7 @@ private:
     bool checkNumberOfPinchedPins(const int& position);
     bool checkFirstAndLastSeparator();
 public:
-    explicit InputValidation(std::string& data_);
+    explicit InputValidation(const std::string& data_);
     std::string getSubstring() const;
     bool checkInputData();
     virtual ~InputValidation();
