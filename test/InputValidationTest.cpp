@@ -345,3 +345,12 @@ TEST_F(InputValidationTest, 37_check_method_checkInputData)
     //THEN
     EXPECT_FALSE(input.checkInputData());
 }
+
+TEST_F(InputValidationTest, 38_check_method_getPlayerName)
+{
+    //GIVEN
+    InputValidation input("Mike:x|--|9/|x|-3|18|x|-3|5/|x||/");
+    //WHEN call checkInputData method
+    //THEN
+    ASSERT_EQ(input.getPlayerName(), "Mike");
+}

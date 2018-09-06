@@ -1,12 +1,14 @@
 #include <string>
 #include <vector>
+#include <map>
 
 class Game
 {
   private:
     std::string pathToFile;
-    std::vector<std::string> playersResult;
     bool correctnessOfInputData;
+    std::vector<std::string> playersResult;
+    std::multimap<unsigned short, std::string> playerStatisctic;
 
 
     void checkInputData();

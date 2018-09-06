@@ -5,7 +5,8 @@
 
 InputValidation::InputValidation(const std::string& data_) :
     data(data_),
-    substring(data.substr(data.find(':') + 1, data.size()))
+    substring(data.substr(data.find(':') + 1, data.size())),
+    playerName(data.substr(0,data.find(':')))
 {
     (data.find_first_of(':') != 0) ? isPlayerNameCorrect = true : isPlayerNameCorrect = false;
 }
@@ -191,4 +192,8 @@ bool InputValidation::checkInputData()
     return false;
 }
 
+std::string InputValidation::getPlayerName() const
+{
+    return playerName;
+}
 InputValidation::~InputValidation() {}
