@@ -29,8 +29,9 @@ void Game::openFile()
     std::string oneLine;
     if (inFile.is_open())
     {
-    while (std::getline(inFile, oneLine))
+    while (!inFile.eof())
     {
+    	std::getline(inFile, oneLine);
         auto inputValidation = std::make_shared<InputValidation>(oneLine);
         if(!(inputValidation->checkInputData()) && oneLine != "")
         {
