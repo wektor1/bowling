@@ -6,7 +6,6 @@
 #include <memory>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 
 Game::Game(const std::string& pathToFile_) :
     pathToFile(pathToFile_)
@@ -33,7 +32,7 @@ void Game::openFile()
     while (std::getline(inFile,oneLine))
     {
         //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        InputValidation inputValidation(oneLine);
+        InputValidation inputValidation("Mike:3-|5/|9-|--|x|");
         std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why false ?
         if(!(inputValidation.checkInputData()) && oneLine != "")
         {
