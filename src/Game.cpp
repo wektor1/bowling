@@ -26,25 +26,18 @@ std::string Game::getGameStatus()
 void Game::openFile()
 {
     std::ifstream inFile(pathToFile);
-    std::string longLine;
-    const char separator = ';';
+    std::string oneLine;
     if (inFile.is_open())
     {
-    while (std::getline(inFile,longLine, separator))
+    while (std::getline(inFile, oneLine))
     {
-        //auto inputValidation = std::make_shared<InputValidation>(oneLine);
-        //std::string oneLine = longLine.substr(0,longLine.size() - 1);
-        InputValidation inputValidation(longLine);
-        std::cout<<longLine<<std::endl;
-        std::cout<<"ile literek: "<<longLine.size()<<std::endl;
-        //std::cout<<"substring:"<<oneLine.substr(0,oneLine.size() - 1)<<std::endl;
-        //std::cout<<"status: "<<inputValidation.checkInputData()<<std::endl; //why false ?
-        if(!(inputValidation.checkInputData()) && longLine != "")
+        auto inputValidation = std::make_shared<InputValidation>(oneLine);
+        if(!(inputValidation->checkInputData()) && oneLine != "")
         {
             correctnessOfInputData = false;
-            throw IncorrectInputData(longLine);
+            throw IncorrectInputData(oneLine);
         }
-        else playersResult.emplace_back(longLine);
+        else playersResult.emplace_back(oneLine);
     }
     correctnessOfInputData = true;
     }
