@@ -20,12 +20,15 @@ std::string Game::getGameStatus()
     auto gameStatus = std::make_unique<Status>(playersResult);
     return gameStatus->getStatus();
     }
-    return "Incorrect path to file or format of input data";
+    return "";
 }
 
-void Game::openFile(std::ifstream& inFile)
+void Game::openFile()
 {
+    std::ifstream inFile(pathToFile);
     std::string oneLine;
+    if (inFile.is_open())
+    {
     while (!inFile.eof())
     {
         std::getline(inFile, oneLine);
@@ -38,15 +41,16 @@ void Game::openFile(std::ifstream& inFile)
         else playersResult.emplace_back(oneLine);
     }
     correctnessOfInputData = true;
+    }
+    else throw InvalidFile(pathToFile);
 }
 
 void Game::checkInputData()
 {
-    std::ifstream inFile(pathToFile);
+
     try
     {
-        if (inFile.is_open()) openFile(inFile);
-        else throw InvalidFile(pathToFile);
+        openFile();
     }
     catch (InvalidFile& exception)
     {

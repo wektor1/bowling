@@ -11,7 +11,7 @@ class Game
 
 
     void checkInputData();
-    void openFile(std::ifstream &inFile);
+    void openFile();
 public:
     explicit Game(const std::string& pathToFile_);
     std::string getGameStatus();
