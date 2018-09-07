@@ -1,7 +1,7 @@
 #include <../inc/Game.hpp>
 #include <../inc/GameStatus.hpp>
 #include <../inc/InputValidation.hpp>
-#include <../inc/ScoreCalculator.hpp>.hpp>
+#include <../inc/ScoreCalculator.hpp>
 #include <../inc/Exceptions.hpp>
 #include <memory>
 #include <iostream>
