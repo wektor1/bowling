@@ -72,8 +72,7 @@ std::string Status::statusAnalyzer() const
     {
         return "no game";
     }
-    if (std::count(allPlayersStatus.begin(), allPlayersStatus.end(), "game in progress") >=
-        std::count(allPlayersStatus.begin(), allPlayersStatus.end(), "game finished"))
+    if (std::count(allPlayersStatus.begin(), allPlayersStatus.end(), "game in progress") > 0)
     {
         return "game in progress";
     }

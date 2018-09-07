@@ -40,13 +40,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(Bowling)
 
 set(SRC_LIST
-    inc/ScoreInCompleted.hpp
+    inc/ScoreCalculator.hpp
     inc/Bowling.hpp
     inc/InputValidation.hpp
     inc/GameStatus.hpp
     inc/Exceptions.hpp
     inc/Game.hpp
-    src/ScoreInCompleted.cpp
+    src/ScoreCalculator.cpp
     src/Bowling.cpp
     src/InputValidation.cpp
     src/GameStatus.cpp
@@ -64,7 +64,7 @@ else (UNIX)
 endif (UNIX)
 
 set(TEST_SRC_LIST
-    test/ScoreInCompletedTest.cpp
+    test/ScoreCalculatorTest.cpp
     test/InputValidationTest.cpp
     test/GameStatusTest.cpp
     test/GameTest.cpp

@@ -10,7 +10,7 @@ TEST_F(GameStatusTest, 1_check_method_getStatus)
 {
     // GIVEN
     std::vector<std::string> results{"Mike:3-|5/|9-|--|x|",
-                                     "Peter:x|2/|--|--|4|"};
+                                     "Peter:x|2/|--|--|4"};
     // WHEN
     Status status(results);
     // THEN

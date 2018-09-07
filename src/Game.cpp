@@ -1,7 +1,7 @@
 #include <../inc/Game.hpp>
 #include <../inc/GameStatus.hpp>
 #include <../inc/InputValidation.hpp>
-#include <../inc/ScoreInCompleted.hpp>
+#include <../inc/ScoreCalculator.hpp>.hpp>
 #include <../inc/Exceptions.hpp>
 #include <memory>
 #include <iostream>
@@ -38,12 +38,22 @@ void Game::openFile()
     while (!inFile.eof())
     {
     	std::getline(inFile, oneLine, '\r');
-        auto inputValidation = std::make_shared<InputValidation>(oneLine);
+        auto inputValidation = std::make_unique<InputValidation>(oneLine);
         if(!(inputValidation->checkInputData()) && oneLine != "")
         {
             throw IncorrectInputData(oneLine);
         }
-        else playersResult.emplace_back(oneLine);
+        else
+        {
+            //auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
+
+           // std::pair<int, std::string> pair;
+
+           // pair.first = score->getScore();
+           // pair.second = inputValidation->getPlayerName();
+           // playersStatisctic.insert(pair);
+            playersResult.emplace_back(oneLine);
+        }
     }
     correctnessOfInputData = true;
     }
@@ -64,4 +74,9 @@ void Game::checkInputData()
     {
         std::cout<<exception.what()<<std::endl;
     }
+}
+
+std::multimap<int, std::string> Game::getPlayersStatistic() const
+{
+    return playersStatisctic;
 }
