@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 
+
 Game::Game(const std::string& pathToFile_) :
     pathToFile(pathToFile_),
     correctnessOfInputData(false)
@@ -27,7 +28,7 @@ std::string Game::getGameStatus()
     return "";
 }
 
-void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string oneLine)
+void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string& oneLine)
 {
     //auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
 
@@ -78,7 +79,8 @@ void Game::checkInputData()
 
 std::multimap<int, std::string> Game::getPlayersStatistic()
 {
-    //checkInputData();
-    std::cout<<playersStatisctic.size()<<std::endl;
-    return playersStatisctic;
+    checkInputData();
+    if(correctnessOfInputData) return playersStatisctic;
+    std::multimap<int, std::string> error;
+    return (error.insert(std::pair<int, std::string>(0, "")));
 }
