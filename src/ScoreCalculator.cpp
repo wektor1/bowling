@@ -3,7 +3,7 @@
 #include <cctype>
 #include <cstdlib>
 
-ScoreCalculator::ScoreCalculator(const std::string& game_,const std::string& status_) : game(game_), status(status_)
+ScoreCalculator::ScoreCalculator(const std::string& game_) : game(game_)
 {
     endScore();
 }
@@ -71,6 +71,6 @@ void ScoreCalculator::endScore()
 {
     score = calculatePoints(game.begin(), game.end());
     auto normal_frames_end = (game.end() - 2);
-    if(status == "game finished")
+    if(game.find("||") != game.npos)
     score -= calculatePoints(normal_frames_end, game.end());
 }
