@@ -88,12 +88,6 @@ std::string Status::getStatus()
     return statusAnalyzer();
 }
 
-std::vector<std::string> Status::getAllPlayersStatus() const
-{
-    std::cout<<allPlayersStatus.size()<<std::endl; //jak to mozliwe
-    return allPlayersStatus;
-}
-
 Status::~Status()
 {
 }
