@@ -1,9 +1,7 @@
 #include <../inc/Game.hpp>
 #include <../inc/GameStatus.hpp>
-#include <../inc/InputValidation.hpp>
 #include <../inc/ScoreCalculator.hpp>
 #include <../inc/Exceptions.hpp>
-#include <memory>
 #include <iostream>
 #include <fstream>
 
@@ -29,6 +27,18 @@ std::string Game::getGameStatus()
     return "";
 }
 
+void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string oneLine)
+{
+    //auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
+
+    std::pair<int, std::string> pair;
+
+    pair.first = 100;
+    pair.second = inputValidation->getPlayerName();
+    playersStatisctic.insert(pair);
+    playersResult.emplace_back(oneLine);
+}
+
 void Game::openFile()
 {
     std::ifstream inFile(pathToFile);
@@ -43,17 +53,7 @@ void Game::openFile()
         {
             throw IncorrectInputData(oneLine);
         }
-        else
-        {
-            //auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
-
-           // std::pair<int, std::string> pair;
-
-           // pair.first = score->getScore();
-           // pair.second = inputValidation->getPlayerName();
-           // playersStatisctic.insert(pair);
-            playersResult.emplace_back(oneLine);
-        }
+        else setGameStatistic(inputValidation, oneLine);
     }
     correctnessOfInputData = true;
     }
@@ -76,7 +76,9 @@ void Game::checkInputData()
     }
 }
 
-std::multimap<int, std::string> Game::getPlayersStatistic() const
+std::multimap<int, std::string> Game::getPlayersStatistic()
 {
+    //checkInputData();
+    std::cout<<playersStatisctic.size()<<std::endl;
     return playersStatisctic;
 }
