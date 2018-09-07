@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
-class ScoreInCompleted
+class ScoreCalculator
 {
     int score, ball_score, ball_score_multiplier,
         second_ball_score_multiplier, third_ball_score_multiplier;
-    std::string game;
+    std::string game, status;
     void isStrike(const char ball);
     void isMissed(const char ball);
     void isSpare(const char ball);
@@ -16,7 +16,7 @@ class ScoreInCompleted
     void endScore();
 
 public:
-    explicit ScoreInCompleted(const std::string& game);
-    ~ScoreInCompleted();
+    explicit ScoreCalculator(const std::string& game, const std::string& status_);
+    ~ScoreCalculator();
     int getScore() const;
 };
