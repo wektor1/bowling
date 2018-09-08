@@ -1,5 +1,7 @@
 #include <../inc/GameStatus.hpp>
 #include <gtest/gtest.h>
+#include <vector>
+#include <string>
 
 struct GameStatusTest : public ::testing::Test
 {};
@@ -7,9 +9,10 @@ struct GameStatusTest : public ::testing::Test
 TEST_F(GameStatusTest, 1_check_method_getStatus)
 {
     // GIVEN
-    std::string path("../results/Game1.txt");
+    std::vector<std::string> results{"Mike:3-|5/|9-|--|x|",
+                                     "Peter:x|2/|--|--|4"};
     // WHEN
-    Status status(path);
+    Status status(results);
     // THEN
     ASSERT_EQ(status.getStatus(), "game in progress");
 }
@@ -17,9 +20,11 @@ TEST_F(GameStatusTest, 1_check_method_getStatus)
 TEST_F(GameStatusTest, 2_check_method_getStatus)
 {
     // GIVEN
-    std::string path("../results/Game2.txt");
+    std::vector<std::string> results{"Luke:--|32|11|--|x|x|",
+                                     "Snow:x|1/|7-|x|-3|22|",
+                                     "Billy:1-|4/|--|4/|--|5/|"};
     // WHEN
-    Status status(path);
+    Status status(results);
     // THEN
     ASSERT_EQ(status.getStatus(), "game in progress");
 }
@@ -27,9 +32,9 @@ TEST_F(GameStatusTest, 2_check_method_getStatus)
 TEST_F(GameStatusTest, 3_check_method_getStatus)
 {
     // GIVEN
-    std::string path("../results/Game3.txt");
+    std::vector<std::string> results{""};
     // WHEN
-    Status status(path);
+    Status status(results);
     // THEN
     ASSERT_EQ(status.getStatus(), "no game");
 }
@@ -37,31 +42,10 @@ TEST_F(GameStatusTest, 3_check_method_getStatus)
 TEST_F(GameStatusTest, 4_check_method_getStatus)
 {
     // GIVEN
-    std::string path("../results/Game4.txt");
+    std::vector<std::string> results{"Lucky:x|x|x|x|x|x|x|x|x|x||x",
+                                     "Kate:x|x|x|x|x|x|x|x|x|x||x"};
     // WHEN
-    Status status(path);
+    Status status(results);
     // THEN
     ASSERT_EQ(status.getStatus(), "game finished");
 }
-
-TEST_F(GameStatusTest, 5_check_method_getStatus)
-{
-    // GIVEN
-    std::string path("../results/Game5.txt");
-    // WHEN
-    Status status(path);
-    // THEN
-    ASSERT_EQ(status.getStatus(), "no game");
-}
-
-TEST_F(GameStatusTest, 6_check_method_getStatus)
-{
-    // GIVEN
-    std::string path("../results/Game10.txt");
-    // WHEN
-    Status status(path);
-    // THEN
-    ASSERT_EQ(status.getStatus(), "Can not open the file: ../results/Game10.txt");
-}
-
-

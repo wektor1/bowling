@@ -1,7 +1,6 @@
 #include <iostream>
-#include <../inc/Bowling.hpp>
 #include <../inc/InputValidation.hpp>
-#include <../inc/GameStatus.hpp>
+#include <../inc/Game.hpp>
 
 int main()
 {

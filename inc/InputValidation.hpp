@@ -6,6 +6,7 @@ class InputValidation
 private:
     std::string data;
     std::string substring;
+    std::string playerName;
     bool isPlayerNameCorrect;
     bool checkNumberofFrames();
     bool checkAllChars();
@@ -18,6 +19,7 @@ private:
 public:
     explicit InputValidation(const std::string& data_);
     std::string getSubstring() const;
+    std::string getPlayerName() const;
     bool checkInputData();
     virtual ~InputValidation();
 };
