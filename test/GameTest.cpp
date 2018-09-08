@@ -62,6 +62,6 @@ TEST_F(GameTest, 6_check_method_getPlayersStatistic)
     // WHEN
     Game game(pathtoFile);
     // THEN
-    ASSERT_EQ(game.getPlayersStatistic()["Ewa"], 91);
+    ASSERT_EQ(game.getPlayersStatistic()["Ewa"], 90);
 }
 
