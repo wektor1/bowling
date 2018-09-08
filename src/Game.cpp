@@ -31,9 +31,9 @@ std::string Game::getGameStatus()
 void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string& oneLine)
 {
     auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
-    std::pair<int, std::string> pair;
-    pair.first = score->getScore();
-    pair.second = inputValidation->getPlayerName();
+    std::pair<std::string, int> pair;
+    pair.first = inputValidation->getPlayerName();
+    pair.second = score->getScore();
     playersStatisctic.insert(pair);
     playersResult.emplace_back(oneLine);
 }
@@ -75,8 +75,11 @@ void Game::checkInputData()
     }
 }
 
-std::multimap<int, std::string> Game::getPlayersStatistic()
+std::map<std::string, int> Game::getPlayersStatistic()
 {
     checkInputData();
     if(correctnessOfInputData) return playersStatisctic;
+    std::map<std::string, int> error;
+    error.insert(std::pair<std::string, int>("", 0));
+    return error;
 }
