@@ -55,4 +55,13 @@ TEST_F(GameTest, 5_check_method_getGameStatus)
     ASSERT_EQ(game.getGameStatus(), "");
 }
 
+TEST_F(GameTest, 6_check_method_getPlayersStatistic)
+{
+    // GIVEN
+    std::string pathtoFile("../results/Game5.txt");
+    // WHEN
+    Game game(pathtoFile);
+    // THEN
+    ASSERT_EQ(game.getPlayersStatistic()["Ewa"], 91);
+}
 
