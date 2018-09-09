@@ -39,6 +39,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(Bowling)
 
+add_subdirectory(boost-cmake)
+
 set(SRC_LIST
     inc/ScoreCalculator.hpp
     inc/Bowling.hpp
@@ -64,6 +66,7 @@ else (UNIX)
 endif (UNIX)
 
 set(TEST_SRC_LIST
+    test/BowlingTest.cpp
     test/ScoreCalculatorTest.cpp
     test/InputValidationTest.cpp
     test/GameStatusTest.cpp
@@ -72,5 +75,9 @@ set(TEST_SRC_LIST
 )
 
 link_libraries(gtest)
+link_libraries(gmock)
 add_executable(${PROJECT_NAME}-ut ${TEST_SRC_LIST})
 target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib)
+target_link_libraries(${PROJECT_NAME}-lib PUBLIC Boost::filesystem)
+target_link_libraries(${PROJECT_NAME}-lib PUBLIC Boost::boost)
+
