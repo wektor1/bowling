@@ -19,4 +19,5 @@ public:
     Game(const std::string& folder, const std::string& fileName);
     std::string getGameStatus();
     std::map<std::string, int> getPlayersStatistic();
+    virtual ~Game();
 };
