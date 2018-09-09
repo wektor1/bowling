@@ -83,3 +83,7 @@ std::map<std::string, int> Game::getPlayersStatistic()
     error.insert(std::pair<std::string, int>("", 0));
     return error;
 }
+
+Game::~Game()
+{
+}
