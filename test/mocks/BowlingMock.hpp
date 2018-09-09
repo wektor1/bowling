@@ -4,7 +4,7 @@
 
 struct BowlingWithNumberOfGames :public Bowling
 {
-    BowlingWithNumberOfGames(const std::string& path) : Bowling(path) {}
+    explicit BowlingWithNumberOfGames(const std::string& path) : Bowling(path) {}
     int getGamesNumber()
     {
         return getGamesList().size();
