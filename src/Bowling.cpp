@@ -2,10 +2,19 @@
 #define BOOST_FILESYSTEM_NO_DEPRECATED
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
+#include "../inc/Exceptions.hpp"
+#include <iostream>
 
 Bowling::Bowling(const std::string &files_directory_path)
 {
-    gamesLoader(files_directory_path);
+    try
+    {
+        gamesLoader(files_directory_path);
+    }
+    catch(const std::exception& except)
+    {
+        std::cout<<except.what()<<std::endl;
+    }
 }
 
 void Bowling::gamesLoader(const std::string& directory)
