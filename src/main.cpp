@@ -1,8 +1,12 @@
 #include <iostream>
-#include <../inc/InputValidation.hpp>
-#include <../inc/Game.hpp>
+#include <../inc/Bowling.hpp>
+
 
 int main()
 {
+    Bowling* bowling = {new Bowling("../results")};
+    bowling->showAllResults();
+
+    delete bowling;
     return 0;
 }
