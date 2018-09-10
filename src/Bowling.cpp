@@ -1,8 +1,8 @@
-#include "../inc/Bowling.hpp"
 #define BOOST_FILESYSTEM_NO_DEPRECATED
+#include "../inc/Bowling.hpp"
+#include "../inc/Exceptions.hpp"
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
-#include "../inc/Exceptions.hpp"
 #include <iostream>
 
 Bowling::Bowling(const std::string &files_directory_path)
@@ -26,12 +26,26 @@ void Bowling::gamesLoader(const std::string& directory)
         if(boost::filesystem::is_regular_file(file))
             games_list.push_back(Game(file.string()));
     }
-
 }
 
-std::vector<Game> Bowling::getGamesList()
+std::vector<Game> Bowling::getGamesList() const
 {
     return games_list;
+}
+
+void Bowling::showAllResults()
+{
+    int lane = 1;
+    for(auto& game : games_list)
+    {
+        std::cout<<"### Lane "<<lane<<": "<<game.getGameStatus()<<" ###"<<std::endl;
+        if(game.getGameStatus() != "no game")
+        for(auto& stats : game.getPlayersStatistic())
+        {
+            std::cout<<stats.first<<" "<<stats.second<<std::endl;
+        }
+        lane++;
+    }
 }
 
 Bowling::~Bowling()
