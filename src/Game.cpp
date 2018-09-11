@@ -25,7 +25,7 @@ std::string Game::getGameStatus()
     auto gameStatus = std::make_unique<Status>(playersResult);
     return gameStatus->getStatus();
     }
-    return "";
+    return "incorrect input";
 }
 
 void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string& oneLine)
@@ -47,6 +47,7 @@ void Game::openFile()
     while (!inFile.eof())
     {
     	std::getline(inFile, oneLine, '\r');
+        inFile.get();
         auto inputValidation = std::make_unique<InputValidation>(oneLine);
         if(!(inputValidation->checkInputData()) && oneLine != "")
         {
@@ -71,7 +72,7 @@ void Game::checkInputData()
     }
     catch (IncorrectInputData& exception)
     {
-        std::cout<<exception.what()<<std::endl;
+        std::cerr<<exception.what()<<std::endl;
     }
 }
 

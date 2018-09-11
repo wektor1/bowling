@@ -11,5 +11,5 @@ public:
     explicit Bowling(const std::string& files_directory_path);
     std::vector<Game> getGamesList() const;
     void showAllResults();
-    ~Bowling();
+    virtual ~Bowling();
 };
