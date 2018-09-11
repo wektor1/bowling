@@ -2,6 +2,7 @@
 #include <../inc/Game.hpp>
 #include <vector>
 #include <string>
+#include <iostream>
 
 class Bowling
 {
@@ -10,6 +11,6 @@ class Bowling
 public:
     explicit Bowling(const std::string& files_directory_path);
     std::vector<Game> getGamesList() const;
-    void showAllResults();
+    friend std::ostream& operator<<(std::ostream& os, const Bowling& bg);
     virtual ~Bowling();
 };

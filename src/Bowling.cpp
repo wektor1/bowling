@@ -3,7 +3,6 @@
 #include "../inc/Exceptions.hpp"
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
-#include <iostream>
 
 Bowling::Bowling(const std::string &files_directory_path)
 {
@@ -33,19 +32,20 @@ std::vector<Game> Bowling::getGamesList() const
     return games_list;
 }
 
-void Bowling::showAllResults()
+std::ostream& operator<<(std::ostream& os, const Bowling& bg)
 {
     int lane = 1;
-    for(auto& game : games_list)
+    for(auto& game : bg.getGamesList())
     {
-        std::cout<<"### Lane "<<lane<<": "<<game.getGameStatus()<<" ###"<<std::endl;
-        if(game.getGameStatus() != "no game")
+        os<<"### Lane "<<lane<<": "<<game.getGameStatus()<<" ###"<<std::endl;
         for(auto& stats : game.getPlayersStatistic())
         {
-            std::cout<<stats.first<<" "<<stats.second<<std::endl;
+            os<<stats.first<<" "<<stats.second<<std::endl;
         }
+
         lane++;
     }
+    return os;
 }
 
 Bowling::~Bowling()
