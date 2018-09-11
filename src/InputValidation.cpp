@@ -83,7 +83,8 @@ bool InputValidation::checkFrameSeparator(const int& position)
             else if (substring.size() == substring.find_last_of('|') + 1) return true;
             else if (substring.size() == substring.find_last_of('|') + 3) 
             {
-                if (substring[position + 1] == '/' || substring[position + 1] == 'x')
+                if (substring[position + 1] == '/' ||
+                   (substring[position + 1] == 'x' && substring[position + 2] == '/'))
                 {
                     return false;
                 }
