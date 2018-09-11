@@ -52,7 +52,7 @@ TEST_F(GameTest, 5_check_method_getGameStatus)
     // WHEN
     Game game(pathtoFile);
     // THEN
-    ASSERT_EQ(game.getGameStatus(), "");
+    ASSERT_EQ(game.getGameStatus(), "incorrect input");
 }
 
 TEST_F(GameTest, 6_check_method_getPlayersStatistic)

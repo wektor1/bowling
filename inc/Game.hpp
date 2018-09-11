@@ -1,3 +1,4 @@
+#pragma once
 #include <../inc/InputValidation.hpp>
 #include <memory>
 #include <string>
