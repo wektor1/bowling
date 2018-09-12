@@ -28,12 +28,12 @@ bool InputValidation::checkAllChars()
     for (auto& sign : substring)
     {
         if ((sign != 'x' &&
-            sign != '-' &&
-            sign != '/' &&
-            sign != '|' &&
-            !isdigit(sign)) ||
-            sign == '0')
-            return false;
+             sign != '-' &&
+             sign != '/' &&
+             sign != '|' &&
+             !isdigit(sign)) ||
+             sign == '0')
+             return false;
     }
     return true;
 }
@@ -75,36 +75,11 @@ bool InputValidation::checkFrameSeparator(const int& position)
         switch (substring[position - 2])
         {
         case 'x':
-            if (substring.size() == substring.find_last_of('|') + 2) 
-            {
-                if (substring[position + 1] == 'x') return true;
-                if (substring[position + 1] == '/') return false;
-            }
-            else if (substring.size() == substring.find_last_of('|') + 1) return true;
-            else if (substring.size() == substring.find_last_of('|') + 3) 
-            {
-                if (substring[position + 1] == '/' ||
-                   (substring[position + 1] == 'x' && substring[position + 2] == '/'))
-                {
-                    return false;
-                }
-
-                if (isdigit(substring[position + 1]) && isdigit(substring[position + 2]))
-                {
-                    if (!checknNighboringNumbers(substring[position + 1], substring[position + 2]))
-                    {
-                        return false;
-                    }
-                }
-            }
-            else return false;
+            checkLastStirke(position);
             break;
-
         case '/':
-            if (substring.size() == substring.find_last_of('|') + 1) return true;
-            if (substring.size() != substring.find_last_of('|') + 2 || substring[position + 1] == '/') return false;
+            checkLastSpare(position);
             break;
-
         default:
             if (substring.size() != substring.find_last_of('|') + 1)
                 return false;
@@ -112,6 +87,39 @@ bool InputValidation::checkFrameSeparator(const int& position)
         }
     }
     return true;
+}
+
+bool InputValidation::checkLastStirke(const int& position)
+{
+    if (substring.size() == substring.find_last_of('|') + 2)
+    {
+        if (substring[position + 1] == 'x') return true;
+        if (substring[position + 1] == '/') return false;
+    }
+    else if (substring.size() == substring.find_last_of('|') + 1) return true;
+    else if (substring.size() == substring.find_last_of('|') + 3)
+    {
+        if (substring[position + 1] == '/' ||
+           (substring[position + 1] == 'x' &&
+            substring[position + 2] == '/'))
+            return false;
+
+        if (isdigit(substring[position + 1]) && isdigit(substring[position + 2]))
+        {
+            if (!checknNighboringNumbers(substring[position + 1], substring[position + 2]))
+                return false;
+        }
+    }
+    else return false;
+}
+
+bool InputValidation::checkLastSpare(const int& position)
+{
+    if (substring.size() == substring.find_last_of('|') + 1)
+        return true;
+    if (substring.size() != substring.find_last_of('|') + 2 ||
+        substring[position + 1] == '/')
+        return false;
 }
 
 bool InputValidation::checkNumberOfPinchedPins(const int& position)
@@ -125,7 +133,8 @@ bool InputValidation::checkNumberOfPinchedPins(const int& position)
         {
             return false;
         }
-        else if (isdigit(substring[position - 2]) && !checknNighboringNumbers(substring[position - 1], substring[position - 2]))
+        else if (isdigit(substring[position - 2]) &&
+                 !checknNighboringNumbers(substring[position - 1], substring[position - 2]))
         {
             return false;
         }
@@ -146,7 +155,8 @@ bool InputValidation::checkFirstAndLastSeparator()
         }
         if (substring.size() == substring.find_last_of('|') + 3) return false;
     }
-    else if (std::count(substring.begin(), substring.end(), '|') == 10 && substring[substring.size() - 1] == '|')
+    else if (std::count(substring.begin(), substring.end(), '|') == 10 &&
+             substring[substring.size() - 1] == '|')
     {
         return false;
     }
@@ -160,41 +170,49 @@ bool InputValidation::checkInputData()
         isPlayerNameCorrect &&
         checkFirstAndLastSeparator())
     {
-        for (int i = 0; i < substring.size(); i++)
-        {
-            if (substring[i] == '|' && i != 0)
-            {
-                switch (substring[i - 1])
-                {
-                case 'x':
-                    if (!checkStrike(i)) return false;
-                    break;
-
-                case '-':
-                    if (!checkSpareOrMiss(i)) return false;
-                    break;
-
-                case'/':
-                    if (!checkSpareOrMiss(i)) return false;
-                    break;
-
-                case '|':
-                    if (!checkFrameSeparator(i)) return false;
-                    break;
-
-                default:
-                    if (!checkNumberOfPinchedPins(i)) return false;
-                    break;
-                }
-            }
-        }
-        return true;
+       runAllVerificationFunctions();
     }
     return false;
+}
+
+bool InputValidation::runAllVerificationFunctions()
+{
+    for (int i = 0; i < substring.size(); i++)
+    {
+        if (substring[i] == '|' && i != 0)
+        {
+            switch (substring[i - 1])
+            {
+            case 'x':
+                if (!checkStrike(i)) return false;
+                break;
+
+            case '-':
+                if (!checkSpareOrMiss(i)) return false;
+                break;
+
+            case'/':
+                if (!checkSpareOrMiss(i)) return false;
+                break;
+
+            case '|':
+                if (!checkFrameSeparator(i)) return false;
+                break;
+
+            default:
+                if (!checkNumberOfPinchedPins(i)) return false;
+                break;
+            }
+        }
+    }
+    return true;
 }
 
 std::string InputValidation::getPlayerName() const
 {
     return playerName;
 }
-InputValidation::~InputValidation() {}
+
+InputValidation::~InputValidation()
+{
+}
