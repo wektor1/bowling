@@ -110,7 +110,7 @@ bool InputValidation::checkLastStirke(const int& position)
                 return false;
         }
     }
-    else return false;
+    return false;
 }
 
 bool InputValidation::checkLastSpare(const int& position)
