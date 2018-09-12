@@ -5,7 +5,7 @@
 struct GameTest : public ::testing::Test
 {};
 
-TEST_F(GameTest, check_if_game_status_from_Game1_will_by_correct)
+TEST_F(GameTest, check_if_game_status_from_Game1_will_be_correct)
 {
     // GIVEN
     std::string pathtoFile("../results/Game1.txt");
@@ -15,7 +15,7 @@ TEST_F(GameTest, check_if_game_status_from_Game1_will_by_correct)
     ASSERT_EQ(game.getGameStatus(), "game in progress");
 }
 
-TEST_F(GameTest, check_if_game_status_from_Game2_will_by_correct)
+TEST_F(GameTest, check_if_game_status_from_Game2_will_be_correct)
 {
     // GIVEN
     std::string pathtoFile("../results/Game2.txt");
@@ -35,7 +35,7 @@ TEST_F(GameTest, check_if_Game3_is_an_empty_file)
     ASSERT_EQ(game.getGameStatus(), "no game");
 }
 
-TEST_F(GameTest, check_if_game_status_from_Game4_will_by_correct)
+TEST_F(GameTest, check_if_game_status_from_Game4_will_be_correct)
 {
     // GIVEN
     std::string pathtoFile("../results/Game4.txt");
