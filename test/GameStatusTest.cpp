@@ -6,7 +6,7 @@
 struct GameStatusTest : public ::testing::Test
 {};
 
-TEST_F(GameStatusTest, 1_check_method_getStatus)
+TEST_F(GameStatusTest, expect_game_in_progress_when_two_players_still_play)
 {
     // GIVEN
     std::vector<std::string> results{"Mike:3-|5/|9-|--|x|",
@@ -17,7 +17,7 @@ TEST_F(GameStatusTest, 1_check_method_getStatus)
     ASSERT_EQ(status.getStatus(), "game in progress");
 }
 
-TEST_F(GameStatusTest, 2_check_method_getStatus)
+TEST_F(GameStatusTest, expect_game_in_progress_when_three_players_still_play)
 {
     // GIVEN
     std::vector<std::string> results{"Luke:--|32|11|--|x|x|",
@@ -29,7 +29,7 @@ TEST_F(GameStatusTest, 2_check_method_getStatus)
     ASSERT_EQ(status.getStatus(), "game in progress");
 }
 
-TEST_F(GameStatusTest, 3_check_method_getStatus)
+TEST_F(GameStatusTest, expect_no_game_when_there_is_an_empty_string)
 {
     // GIVEN
     std::vector<std::string> results{""};
@@ -39,7 +39,7 @@ TEST_F(GameStatusTest, 3_check_method_getStatus)
     ASSERT_EQ(status.getStatus(), "no game");
 }
 
-TEST_F(GameStatusTest, 4_check_method_getStatus)
+TEST_F(GameStatusTest, expect_game_finished_when_all_players_finished_theirs_games)
 {
     // GIVEN
     std::vector<std::string> results{"Lucky:x|x|x|x|x|x|x|x|x|x||x",
