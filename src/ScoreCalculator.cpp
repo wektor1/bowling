@@ -2,10 +2,19 @@
 #include <algorithm>
 #include <cctype>
 #include <cstdlib>
-
+#include <locale>
 ScoreCalculator::ScoreCalculator(const std::string& game_) : game(game_)
 {
+    changeToLower();
     endScore();
+}
+
+void ScoreCalculator::changeToLower()
+{
+    std::for_each(game.begin(),game.end(),[](char& sign)
+    {
+        sign=std::tolower(sign);
+    });
 }
 
 ScoreCalculator::~ScoreCalculator() {}

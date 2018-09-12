@@ -14,6 +14,7 @@ private:
     bool checkIfGameIsInProggress(const std::string& result);
     bool checkEmptyFile(const std::string& result);
     std::string statusAnalyzer() const;
+    void changeToLower();
 public:
     explicit Status(const std::vector<std::string>& allPlayersResults_);
     std::string getStatus();

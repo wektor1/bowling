@@ -14,6 +14,7 @@ class ScoreCalculator
     int calculatePoints(std::string::const_iterator begin,
                         std::string::const_iterator end);
     void endScore();
+    void changeToLower();
 
 public:
     explicit ScoreCalculator(const std::string& game);
