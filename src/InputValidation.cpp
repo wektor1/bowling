@@ -2,13 +2,23 @@
 #include <algorithm>
 #include <iostream>
 #include <cctype>
+#include <locale>
 
 InputValidation::InputValidation(const std::string& data_) :
     data(data_),
     substring(data.substr(data.find(':') + 1, data.size())),
     playerName(data.substr(0,data.find(':')))
 {
+    changeToLower();
     (data.find_first_of(':') != 0) ? isPlayerNameCorrect = true : isPlayerNameCorrect = false;
+}
+
+void InputValidation::changeToLower()
+{
+    std::for_each(substring.begin(),substring.end(),[](char& sign)
+    {
+        sign = std::tolower(sign);
+    });
 }
 
 std::string InputValidation::getSubstring() const

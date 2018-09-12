@@ -3,10 +3,23 @@
 #include <fstream>
 #include <algorithm>
 #include <iostream>
+#include <locale>
 
 Status::Status(const std::vector<std::string>& allPlayersResults_) :
     allPlayersResults(allPlayersResults_)
 {
+    changeToLower();
+}
+
+void Status::changeToLower()
+{
+    std::for_each(allPlayersResults.begin(),allPlayersResults.end(),[](std::string& line)
+    {
+       std::for_each(line.begin(),line.end(),[](char& sign)
+       {
+           sign=std::tolower(sign);
+       });
+    });
 }
 
 void Status::checkStrike(const std::string& result)

@@ -17,7 +17,7 @@ TEST_F(ScoreCalculatorTest, all_balls_missed)
 TEST_F(ScoreCalculatorTest, strikes_in_all_frames)
 {
     // GIVEN
-    std::string game("x|x|x|x|x|x|x|x|x|x||xx");
+    std::string game("x|x|X|x|x|x|X|x|x|X||xx");
     // WHEN
     ScoreCalculator score(game);
     // THEN

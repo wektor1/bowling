@@ -16,6 +16,7 @@ private:
     bool checkFrameSeparator(const int& position);
     bool checkNumberOfPinchedPins(const int& position);
     bool checkFirstAndLastSeparator();
+    void changeToLower();
     bool checkLastStirke(const int& position);
     bool checkLastSpare(const int& position);
     bool runAllVerificationFunctions();

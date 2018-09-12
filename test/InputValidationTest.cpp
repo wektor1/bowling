@@ -61,7 +61,7 @@ TEST_F(InputValidationTest, expect_false_when_there_is_no_stick_after_two_signs)
 TEST_F(InputValidationTest, expect_true_when_there_are_is_stick_after_two_signs)
 {
     //GIVEN
-    InputValidation input("Mike:x|--|");
+    InputValidation input("Mike:X|--|");
     //WHEN call checkInputData method
     //THEN
     EXPECT_TRUE(input.checkInputData());
@@ -169,7 +169,7 @@ TEST_F(InputValidationTest, expect_false_when_sum_of_numbers_is_bigger_then_nine
 TEST_F(InputValidationTest, expect_true_when_sum_of_numbers_is_less_then_nine)
 {
     //GIVEN
-    InputValidation input("Mike:x|--|9/|x|-3|18|");
+    InputValidation input("Mike:x|--|9/|X|-3|18|");
     //WHEN call checkInputData method
     //THEN
     EXPECT_TRUE(input.checkInputData());
@@ -178,7 +178,7 @@ TEST_F(InputValidationTest, expect_true_when_sum_of_numbers_is_less_then_nine)
 TEST_F(InputValidationTest, expect_false_when_there_are_two_sticks_in_incorrect_place)
 {
     //GIVEN
-    InputValidation input("Mike:x|--|9/|x|-3|18|x|-3||");
+    InputValidation input("Mike:x|--|9/|X|-3|18|x|-3||");
     //WHEN call checkInputData method
     //THEN
     EXPECT_FALSE(input.checkInputData());
