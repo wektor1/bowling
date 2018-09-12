@@ -16,6 +16,9 @@ private:
     bool checkFrameSeparator(const int& position);
     bool checkNumberOfPinchedPins(const int& position);
     bool checkFirstAndLastSeparator();
+    bool checkLastStirke(const int& position);
+    bool checkLastSpare(const int& position);
+    bool runAllVerificationFunctions();
 public:
     explicit InputValidation(const std::string& data_);
     std::string getSubstring() const;
