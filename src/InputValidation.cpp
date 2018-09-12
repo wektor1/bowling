@@ -67,6 +67,10 @@ bool InputValidation::checkSpareOrMiss(const int& position)
 
 bool InputValidation::checkFrameSeparator(const int& position)
 {
+    if (substring.size() != substring.find_last_of('|') + 1 &&
+        substring[position - 2] != 'x' &&
+        substring[position - 2] != '/')
+        return false;
     if (position != substring.find_last_of('|') ||
         std::count(substring.begin(), substring.end(), '|') != 11)
         return false;
@@ -75,14 +79,10 @@ bool InputValidation::checkFrameSeparator(const int& position)
         switch (substring[position - 2])
         {
         case 'x':
-            checkLastStirke(position);
+            return checkLastStirke(position);
             break;
         case '/':
-            checkLastSpare(position);
-            break;
-        default:
-            if (substring.size() != substring.find_last_of('|') + 1)
-                return false;
+            return checkLastSpare(position);
             break;
         }
     }
@@ -110,7 +110,8 @@ bool InputValidation::checkLastStirke(const int& position)
                 return false;
         }
     }
-    return false;
+    else return false;
+    return true;
 }
 
 bool InputValidation::checkLastSpare(const int& position)
@@ -118,8 +119,8 @@ bool InputValidation::checkLastSpare(const int& position)
     if (substring.size() == substring.find_last_of('|') + 1)
         return true;
     if (substring.size() != substring.find_last_of('|') + 2 ||
-        substring[position + 1] == '/')
-        return false;
+        substring[position + 1] == '/') return false;
+    return true;
 }
 
 bool InputValidation::checkNumberOfPinchedPins(const int& position)
@@ -170,7 +171,7 @@ bool InputValidation::checkInputData()
         isPlayerNameCorrect &&
         checkFirstAndLastSeparator())
     {
-       runAllVerificationFunctions();
+       return runAllVerificationFunctions();
     }
     return false;
 }
