@@ -66,13 +66,13 @@ void Game::checkInputData()
     {
         openFile();
     }
-    catch (InvalidFile& exception)
+    catch (const InvalidFile& exception)
     {
         std::cout<<exception.what()<<std::endl;
     }
-    catch (IncorrectInputData& exception)
+    catch (const IncorrectInputData& exception)
     {
-        std::cerr<<exception.what()<<std::endl;
+        errorMessage = exception.what();
     }
 }
 
@@ -80,7 +80,7 @@ std::map<std::string, std::string> Game::getPlayersStatistic()
 {
     if(correctnessOfInputData) return playersStatisctic;
     std::map<std::string, std::string> error;
-    error.insert(std::pair<std::string, std::string>("can not show players stats:", "make sure the input data is correct"));
+    error.insert(std::pair<std::string, std::string>("Can not show players stats:", errorMessage));
     return error;
 }
 
