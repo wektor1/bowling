@@ -22,8 +22,8 @@ std::string Game::getGameStatus()
     checkInputData();
     if(correctnessOfInputData)
     {
-    auto gameStatus = std::make_unique<Status>(playersResult);
-    return gameStatus->getStatus();
+        auto gameStatus = std::make_unique<Status>(playersResult);
+        return gameStatus->getStatus();
     }
     return "incorrect input";
 }
@@ -44,18 +44,18 @@ void Game::openFile()
     std::string oneLine;
     if (inFile.is_open())
     {
-    while (!inFile.eof())
-    {
-    	std::getline(inFile, oneLine, '\r');
-        inFile.get();
-        auto inputValidation = std::make_unique<InputValidation>(oneLine);
-        if(!(inputValidation->checkInputData()) && oneLine != "")
+        while (!inFile.eof())
         {
-            throw IncorrectInputData(oneLine);
+            std::getline(inFile, oneLine, '\r');
+            inFile.get();
+            auto inputValidation = std::make_unique<InputValidation>(oneLine);
+            if(!(inputValidation->checkInputData()) && oneLine != "")
+            {
+                throw IncorrectInputData(oneLine);
+            }
+            else setGameStatistic(inputValidation, oneLine);
         }
-        else setGameStatistic(inputValidation, oneLine);
-    }
-    correctnessOfInputData = true;
+        correctnessOfInputData = true;
     }
     else throw InvalidFile(pathToFile);
 }
@@ -78,11 +78,10 @@ void Game::checkInputData()
 
 std::map<std::string, std::string> Game::getPlayersStatistic()
 {
-        checkInputData();
-        if(correctnessOfInputData) return playersStatisctic;
-        std::map<std::string, std::string> error;
-        error.insert(std::pair<std::string, std::string>("can not show players stats:", "make sure the input data is correct"));
-        return error;
+    if(correctnessOfInputData) return playersStatisctic;
+    std::map<std::string, std::string> error;
+    error.insert(std::pair<std::string, std::string>("can not show players stats:", "make sure the input data is correct"));
+    return error;
 }
 
 Game::~Game()
