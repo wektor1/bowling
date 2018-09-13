@@ -78,10 +78,10 @@ void Game::checkInputData()
 
 std::map<std::string, std::string> Game::getPlayersStatistic()
 {
-    checkInputData();
+        checkInputData();
         if(correctnessOfInputData) return playersStatisctic;
         std::map<std::string, std::string> error;
-        error.insert(std::pair<std::string, std::string>("", ""));
+        error.insert(std::pair<std::string, std::string>("can not show players stats:", "make sure the input data is correct"));
         return error;
 }
 
