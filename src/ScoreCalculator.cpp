@@ -3,7 +3,7 @@
 #include <cctype>
 #include <cstdlib>
 #include <locale>
-ScoreCalculator::ScoreCalculator(const std::string& game_) : game(game_)
+ScoreCalculator::ScoreCalculator(const std::string &game_) : game(game_)
 {
     changeToLower();
     endScore();
@@ -11,10 +11,8 @@ ScoreCalculator::ScoreCalculator(const std::string& game_) : game(game_)
 
 void ScoreCalculator::changeToLower()
 {
-    std::for_each(game.begin(),game.end(),[](char& sign)
-    {
-        sign=std::tolower(sign);
-    });
+    std::for_each(game.begin(), game.end(),
+                  [](char &sign) { sign = std::tolower(sign); });
 }
 
 ScoreCalculator::~ScoreCalculator() {}
@@ -23,7 +21,8 @@ int ScoreCalculator::getScore() const { return score; }
 
 void ScoreCalculator::isStrike(const char ball)
 {
-    if (ball == 'x') {
+    if (ball == 'x')
+    {
         ball_score = 10;
         second_ball_score_multiplier++;
         third_ball_score_multiplier++;
@@ -32,7 +31,8 @@ void ScoreCalculator::isStrike(const char ball)
 
 void ScoreCalculator::isSpare(const char ball)
 {
-    if (ball == '/') {
+    if (ball == '/')
+    {
         ball_score = 10 - ball_score;
         second_ball_score_multiplier++;
     }
@@ -52,7 +52,8 @@ void ScoreCalculator::isNormalHit(const char ball)
 
 void ScoreCalculator::checkCharacter(const char character, int &value)
 {
-    if (character != '|') {
+    if (character != '|')
+    {
         isSpare(character);
         isStrike(character);
         isMissed(character);
@@ -65,7 +66,7 @@ void ScoreCalculator::checkCharacter(const char character, int &value)
 }
 
 int ScoreCalculator::calculatePoints(std::string::const_iterator begin,
-                                      std::string::const_iterator end)
+                                     std::string::const_iterator end)
 {
     int value = 0;
     ball_score_multiplier = third_ball_score_multiplier
@@ -80,6 +81,6 @@ void ScoreCalculator::endScore()
 {
     score = calculatePoints(game.begin(), game.end());
     auto normal_frames_end = (game.end() - 2);
-    if(game.find("||") != game.npos)
-    score -= calculatePoints(normal_frames_end, game.end());
+    if (game.find("||") != game.npos)
+        score -= calculatePoints(normal_frames_end, game.end());
 }
