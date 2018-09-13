@@ -37,8 +37,9 @@ std::ostream& operator<<(std::ostream& os, const Bowling& bg)
     int lane = 1;
     for(auto& game : bg.getGamesList())
     {
-        os<<"### Lane "<<lane<<": "<<game.getGameStatus()<<" ###"<<std::endl;
-        if(game.getGameStatus() != "no game")
+        std::string showGameStatus = "### Lane " + std::to_string(lane) + ": " + game.getGameStatus() + " ###";
+        os<<showGameStatus<<std::endl;
+        if(showGameStatus.find("no game") == std::string::npos)
         {
             for(auto& stats : game.getPlayersStatistic())
             {
