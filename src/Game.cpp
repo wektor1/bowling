@@ -2,7 +2,6 @@
 #include <../inc/GameStatus.hpp>
 #include <../inc/ScoreCalculator.hpp>
 #include <../inc/Exceptions.hpp>
-#include <sstream>
 #include <iostream>
 #include <fstream>
 
@@ -31,12 +30,10 @@ std::string Game::getGameStatus()
 
 void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string& oneLine)
 {
-    std::ostringstream ss;
     auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
     std::pair<std::string, std::string> pair;
     pair.first = inputValidation->getPlayerName();
-    ss<<score->getScore();
-    pair.second = ss.str();
+    pair.second = std::to_string(score->getScore());
     playersStatisctic.insert(pair);
     playersResult.emplace_back(oneLine);
 }
@@ -81,11 +78,16 @@ void Game::checkInputData()
 
 std::map<std::string, std::string> Game::getPlayersStatistic()
 {
+    try
+    {
     checkInputData();
     if(correctnessOfInputData) return playersStatisctic;
-    std::map<std::string, std::string> error;
-    error.insert(std::pair<std::string, std::string>("", ""));
-    return error;
+    else throw InvalidStatistic("can not show players statistic");
+    }
+    catch(const InvalidStatistic& error)
+    {
+        std::cout<<error.what()<<std::endl;
+    }
 }
 
 Game::~Game()
