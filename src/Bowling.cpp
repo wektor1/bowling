@@ -38,11 +38,13 @@ std::ostream& operator<<(std::ostream& os, const Bowling& bg)
     for(auto& game : bg.getGamesList())
     {
         os<<"### Lane "<<lane<<": "<<game.getGameStatus()<<" ###"<<std::endl;
-        for(auto& stats : game.getPlayersStatistic())
+        if(game.getGameStatus() != "no game")
         {
-            os<<stats.first<<" "<<stats.second<<std::endl;
+            for(auto& stats : game.getPlayersStatistic())
+            {
+                os<<stats.first<<" "<<stats.second<<std::endl;
+            }
         }
-
         lane++;
     }
     return os;
