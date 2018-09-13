@@ -2,7 +2,8 @@
 #include <gtest/gtest.h>
 
 struct ScoreCalculatorTest : public ::testing::Test
-{};
+{
+};
 
 TEST_F(ScoreCalculatorTest, all_balls_missed)
 {
@@ -67,36 +68,35 @@ TEST_F(ScoreCalculatorTest, average_games)
 TEST_F(ScoreCalculatorTest, unfinished_games)
 {
     {
-        //GIVEN
+        // GIVEN
         std::string game("43|71|x|1/|-");
-        //WHEN
+        // WHEN
         ScoreCalculator score(game);
-        //THEN
-        ASSERT_EQ(score.getScore(),45);
+        // THEN
+        ASSERT_EQ(score.getScore(), 45);
     }
     {
-        //GIVEN
+        // GIVEN
         std::string game("-3|1-|x|1/|-4|x|1");
-        //WHEN
+        // WHEN
         ScoreCalculator score(game);
-        //THEN
-        ASSERT_EQ(score.getScore(),50);
+        // THEN
+        ASSERT_EQ(score.getScore(), 50);
     }
     {
-        //GIVEN
+        // GIVEN
         std::string game("x|x|x|x|-/|-");
-        //WHEN
+        // WHEN
         ScoreCalculator score(game);
-        //THEN
-        ASSERT_EQ(score.getScore(),110);
+        // THEN
+        ASSERT_EQ(score.getScore(), 110);
     }
     {
-        //GIVEN
+        // GIVEN
         std::string game("41|42|-7|-/|x");
-        //WHEN
+        // WHEN
         ScoreCalculator score(game);
-        //THEN
-        ASSERT_EQ(score.getScore(),48);
+        // THEN
+        ASSERT_EQ(score.getScore(), 48);
     }
-
 }

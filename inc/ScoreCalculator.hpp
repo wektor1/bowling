@@ -3,8 +3,8 @@
 
 class ScoreCalculator
 {
-    int score, ball_score, ball_score_multiplier,
-        second_ball_score_multiplier, third_ball_score_multiplier;
+    int score, ball_score, ball_score_multiplier, second_ball_score_multiplier,
+        third_ball_score_multiplier;
     std::string game;
     void isStrike(const char ball);
     void isMissed(const char ball);
@@ -17,7 +17,7 @@ class ScoreCalculator
     void changeToLower();
 
 public:
-    explicit ScoreCalculator(const std::string& game);
+    explicit ScoreCalculator(const std::string &game);
     ~ScoreCalculator();
     int getScore() const;
 };
