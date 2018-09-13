@@ -37,12 +37,15 @@ std::ostream& operator<<(std::ostream& os, const Bowling& bg)
     int lane = 1;
     for(auto& game : bg.getGamesList())
     {
-        os<<"### Lane "<<lane<<": "<<game.getGameStatus()<<" ###"<<std::endl;
-        for(auto& stats : game.getPlayersStatistic())
+        std::string showGameStatus = "### Lane " + std::to_string(lane) + ": " + game.getGameStatus() + " ###";
+        os<<showGameStatus<<std::endl;
+        if(showGameStatus.find("no game") == std::string::npos)
         {
-            os<<stats.first<<" "<<stats.second<<std::endl;
+            for(auto& stats : game.getPlayersStatistic())
+            {
+                os<<stats.first<<" "<<stats.second<<std::endl;
+            }
         }
-
         lane++;
     }
     return os;

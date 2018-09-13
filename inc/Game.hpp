@@ -8,6 +8,7 @@
 class Game
 {
   private:
+    std::string errorMessage;
     std::string pathToFile;
     std::vector<std::string> playersResult;
     std::map<std::string, std::string> playersStatisctic;
