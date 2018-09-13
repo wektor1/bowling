@@ -17,11 +17,3 @@ public:
         : invalid_argument("Incorrect input data: " + inputData)
     {}
 };
-
-class InvalidStatistic : public std::invalid_argument
-{
-public:
-    explicit InvalidStatistic(const std::string& message)
-        : invalid_argument(message)
-    {}
-};
