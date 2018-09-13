@@ -5,6 +5,9 @@
 #include <locale>
 ScoreCalculator::ScoreCalculator(const std::string &game_) : game(game_)
 {
+    ball_score_multiplier = third_ball_score_multiplier
+        = second_ball_score_multiplier = 1;
+    score = ball_score = 0;
     changeToLower();
     endScore();
 }
@@ -69,9 +72,6 @@ int ScoreCalculator::calculatePoints(std::string::const_iterator begin,
                                      std::string::const_iterator end)
 {
     int value = 0;
-    ball_score_multiplier = third_ball_score_multiplier
-        = second_ball_score_multiplier = 1;
-    ball_score = 0;
     std::for_each(begin, end,
                   [&](const char ball) { checkCharacter(ball, value); });
     return value;
@@ -82,5 +82,10 @@ void ScoreCalculator::endScore()
     score = calculatePoints(game.begin(), game.end());
     auto normal_frames_end = (game.end() - 2);
     if (game.find("||") != game.npos)
+    {
+        ball_score_multiplier = third_ball_score_multiplier
+            = second_ball_score_multiplier = 1;
+        ball_score = 0;
         score -= calculatePoints(normal_frames_end, game.end());
+    }
 }
