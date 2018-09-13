@@ -3,7 +3,8 @@
 #include <string>
 
 struct GameTest : public ::testing::Test
-{};
+{
+};
 
 TEST_F(GameTest, check_if_game_status_from_Game1_will_be_correct)
 {
@@ -64,4 +65,3 @@ TEST_F(GameTest, there_should_be_no_statistic_when_input_is_incorrect)
     // THEN
     ASSERT_EQ(game.getPlayersStatistic()["Ewa"], "");
 }
-

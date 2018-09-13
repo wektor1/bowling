@@ -1,26 +1,24 @@
+#include <../inc/Exceptions.hpp>
 #include <../inc/Game.hpp>
 #include <../inc/GameStatus.hpp>
 #include <../inc/ScoreCalculator.hpp>
-#include <../inc/Exceptions.hpp>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
-
-Game::Game(const std::string& pathToFile_) :
-    pathToFile(pathToFile_),
-    correctnessOfInputData(false)
+Game::Game(const std::string &pathToFile_)
+    : pathToFile(pathToFile_), correctnessOfInputData(false)
 {
 }
 
-Game::Game(const std::string& folder, const std::string& fileName) :
-    Game("../" + folder + "/" + fileName + ".txt")
+Game::Game(const std::string &folder, const std::string &fileName)
+    : Game("../" + folder + "/" + fileName + ".txt")
 {
 }
 
 std::string Game::getGameStatus()
 {
     checkInputData();
-    if(correctnessOfInputData)
+    if (correctnessOfInputData)
     {
         auto gameStatus = std::make_unique<Status>(playersResult);
         return gameStatus->getStatus();
@@ -28,9 +26,11 @@ std::string Game::getGameStatus()
     return "incorrect input";
 }
 
-void Game::setGameStatistic(std::unique_ptr<InputValidation>& inputValidation, std::string& oneLine)
+void Game::setGameStatistic(std::unique_ptr<InputValidation> &inputValidation,
+                            std::string &oneLine)
 {
-    auto score = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
+    auto score
+        = std::make_unique<ScoreCalculator>(inputValidation->getSubstring());
     std::pair<std::string, std::string> pair;
     pair.first = inputValidation->getPlayerName();
     pair.second = std::to_string(score->getScore());
@@ -49,15 +49,17 @@ void Game::openFile()
             std::getline(inFile, oneLine, '\r');
             inFile.get();
             auto inputValidation = std::make_unique<InputValidation>(oneLine);
-            if(!(inputValidation->checkInputData()) && oneLine != "")
+            if (!(inputValidation->checkInputData()) && oneLine != "")
             {
                 throw IncorrectInputData(oneLine);
             }
-            else setGameStatistic(inputValidation, oneLine);
+            else
+                setGameStatistic(inputValidation, oneLine);
         }
         correctnessOfInputData = true;
     }
-    else throw InvalidFile(pathToFile);
+    else
+        throw InvalidFile(pathToFile);
 }
 
 void Game::checkInputData()
@@ -66,11 +68,11 @@ void Game::checkInputData()
     {
         openFile();
     }
-    catch (const InvalidFile& exception)
+    catch (const InvalidFile &exception)
     {
-        std::cout<<exception.what()<<std::endl;
+        std::cout << exception.what() << std::endl;
     }
-    catch (const IncorrectInputData& exception)
+    catch (const IncorrectInputData &exception)
     {
         errorMessage = exception.what();
     }
@@ -78,12 +80,12 @@ void Game::checkInputData()
 
 std::map<std::string, std::string> Game::getPlayersStatistic()
 {
-    if(correctnessOfInputData) return playersStatisctic;
+    if (correctnessOfInputData)
+        return playersStatisctic;
     std::map<std::string, std::string> error;
-    error.insert(std::pair<std::string, std::string>("Can not show players stats:", errorMessage));
+    error.insert(std::pair<std::string, std::string>(
+        "Can not show players stats:", errorMessage));
     return error;
 }
 
-Game::~Game()
-{
-}
+Game::~Game() {}
