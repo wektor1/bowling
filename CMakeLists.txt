@@ -37,8 +37,6 @@ endif()
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "-g -Wall -O0 -fprofile-arcs -ftest-coverage")
-
 project(Bowling)
 
 add_subdirectory(boost-cmake)
@@ -50,11 +48,13 @@ set(SRC_LIST
     inc/GameStatus.hpp
     inc/Exceptions.hpp
     inc/Game.hpp
+    inc/BowlingManagmentSystem.hpp
     src/ScoreCalculator.cpp
     src/Bowling.cpp
     src/InputValidation.cpp
     src/GameStatus.cpp
     src/Game.cpp
+    src/BowlingManagmentSystem.cpp
 )
 
 include_directories(src)
