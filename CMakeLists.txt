@@ -48,11 +48,13 @@ set(SRC_LIST
     inc/GameStatus.hpp
     inc/Exceptions.hpp
     inc/Game.hpp
+    inc/BowlingManagmentSystem.hpp
     src/ScoreCalculator.cpp
     src/Bowling.cpp
     src/InputValidation.cpp
     src/GameStatus.cpp
     src/Game.cpp
+    src/BowlingManagmentSystem.cpp
 )
 
 include_directories(src)
