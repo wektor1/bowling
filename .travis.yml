@@ -11,8 +11,7 @@ before_install:
 matrix:
     include:
         addons:
-            apt:
-          
+            apt:        
                 update: true
                 packages:
                     - lcov
