@@ -37,8 +37,7 @@ endif()
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "-coverage -O0")
-
+set(CMAKE_CXX_FLAGS "-g -Wall -O0 -fprofile-arcs -ftest-coverage")
 
 project(Bowling)
 
